@@ -1,8 +1,21 @@
-import { FilmCard } from "../../film-card/film-card"
+import { FilmCard, Props as FilmCardData } from "../../film-card/film-card"
 
+const dataFilmCard: FilmCardData = {
+    imgSrc: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
+    imgWidth: '280',
+    imgHeight: '175',
+    title: 'Fantastic Beasts: The Crimes of Grindelwald',
+    link: 'film-page.html'
+}
 
+export type Props = {
+    filmTitle: string;
+    filmGenre: string;
+    filmPromoDate: number;
+}
 
-export function Main() {
+export function Main(props: Props) {
+    const{filmTitle, filmGenre, filmPromoDate}=props;
     return (
         <>
             <section className="film-card">
@@ -40,10 +53,10 @@ export function Main() {
                         </div>
 
                         <div className="film-card__desc">
-                            <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+                            <h2 className="film-card__title">{filmTitle}</h2>
                             <p className="film-card__meta">
-                                <span className="film-card__genre">Drama</span>
-                                <span className="film-card__year">2014</span>
+                                <span className="film-card__genre">{filmGenre}</span>
+                                <span className="film-card__year">{filmPromoDate}</span>
                             </p>
                             <div className="film-card__buttons">
                                 <button className="btn btn--play film-card__button" type="button">
@@ -123,7 +136,14 @@ export function Main() {
                     <div className="catalog__films-list">
                         {
                             Array.from({ length: 20 }).map(() => (
-                                <FilmCard />
+                                <FilmCard 
+                                    key={dataFilmCard.link}
+                                    imgSrc={dataFilmCard.imgSrc}
+                                    imgWidth={dataFilmCard.imgWidth}
+                                    imgHeight={dataFilmCard.imgHeight}
+                                    title={dataFilmCard.title}
+                                    link={dataFilmCard.link}
+                                />
                             ))
                         }
                     </div>
