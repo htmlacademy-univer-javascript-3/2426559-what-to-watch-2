@@ -1,10 +1,10 @@
 
 export type Props = {
-    imgSrc: string;
-    imgWidth: string;
-    imgHeight: string;
-    title: string;
-    link: string;
+    imgSrc: string,
+    imgWidth: string,
+    imgHeight: string,
+    title: string,
+    link: string
 
 }
 
