@@ -1,4 +1,4 @@
-import { FilmCard, Props as FilmCardData } from '../../film-card/film-card';
+import { FilmCard, Props as FilmCardData } from 'src/film-card/film-card';
 
 const dataFilmCard: FilmCardData = {
   imgSrc: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',

@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import { RoutePathname } from "../../constants"
+import { RoutePathname } from "src/constants"
 import "./error-page.css"
 
 export function ErrorPage() {
