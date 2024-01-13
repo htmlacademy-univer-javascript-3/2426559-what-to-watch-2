@@ -15,7 +15,7 @@ export function App(props: Props) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='RoutePathname.MAIN'>
+        <Route path={RoutePathname.MAIN}>
           <Route
             index
             element={(
