@@ -51,7 +51,7 @@ export function Main(props: Props) {
             <div className="film-card__poster">
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
-     
+
             <div className="film-card__desc">
               <h2 className="film-card__title">{filmTitle}</h2>
               <p className="film-card__meta">

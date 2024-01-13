@@ -7,6 +7,7 @@ import { AddReview } from 'src/pages/add-review';
 import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
+import { CheckAuth } from 'src/check-auth';
 
 type Props = MainProps;
 
@@ -29,7 +30,7 @@ export function App(props: Props) {
           />
           <Route
             path={RoutePathname.MY_LIST}
-            element={<MyList />}
+            element={<CheckAuth><MyList /></CheckAuth>}
           />
           <Route
             path={`${RoutePathname.FILMS}/:id`}

@@ -5,7 +5,6 @@ export type Props = {
     imgHeight: string,
     title: string,
     link: string
-
 }
 
 export function FilmCard(props: Props) {
