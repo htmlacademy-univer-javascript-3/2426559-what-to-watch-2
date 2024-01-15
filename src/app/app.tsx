@@ -1,4 +1,4 @@
-import { Main, MainProps } from 'src/pages/main';
+import { Main } from 'src/pages/main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SignIn } from 'src/pages/sign-in';
 import { MyList } from 'src/pages/mylist';
@@ -8,10 +8,14 @@ import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
 import { CheckAuth } from 'src/check-auth';
+import { FilmCardData} from 'src/types';
 
-type Props = MainProps;
+type Props = {
+  films: FilmCardData[]
+};
 
 export function App(props: Props) {
+  const {films} = props;
   return (
     <BrowserRouter>
       <Routes>
@@ -20,7 +24,7 @@ export function App(props: Props) {
             index
             element={(
               <Main
-                {...props}
+                films = {films}
               />
             )}
           />
@@ -45,7 +49,7 @@ export function App(props: Props) {
             element={<Player />}
           />
         </Route>
-        <Route path='*' element={<ErrorPage/>} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,28 +1,19 @@
-import { FilmCard, Props as FilmCardData } from 'src/film-card/film-card';
-
-const dataFilmCard: FilmCardData = {
-  imgSrc: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-  imgWidth: '280',
-  imgHeight: '175',
-  title: 'Fantastic Beasts: The Crimes of Grindelwald',
-  link: 'film-page.html'
-};
+import { FilmCardData } from "src/types";
 
 export type Props = {
-    filmTitle: string,
-    filmGenre: string,
-    filmPromoDate: number
+    films: FilmCardData[]
 }
 
 export function Main(props: Props) {
-  const{filmTitle, filmGenre, filmPromoDate} = props;
+  const{films} = props;
+  const film = films[0];
+  const {title, genre, year, preview, poster} = film;
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={preview} alt={title} />
         </div>
-
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
@@ -49,14 +40,14 @@ export function Main(props: Props) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={poster} alt={title} />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{filmTitle}</h2>
+              <h2 className="film-card__title">{title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{filmGenre}</span>
-                <span className="film-card__year">{filmPromoDate}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{year}</span>
               </p>
               <div className="film-card__buttons">
                 <button className="btn btn--play film-card__button" type="button">

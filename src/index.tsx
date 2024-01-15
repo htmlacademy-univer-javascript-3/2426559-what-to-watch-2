@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {filmsMocks} from 'src/mocks/films';
 import { App } from './app/app';
 
 const root = ReactDOM.createRoot(
@@ -9,9 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      filmTitle='The Grand Budapest Hotel'
-      filmGenre='Drama'
-      filmPromoDate={2014}
+      films={filmsMocks}
     />
   </React.StrictMode>
 );
