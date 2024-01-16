@@ -8,14 +8,15 @@ import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
 import { CheckAuth } from 'src/components/check-auth';
-import { FilmCardData} from 'src/types';
+import { FilmCardData, PlayerProps} from 'src/types';
 
 type Props = {
-  films: FilmCardData[]
+  films: FilmCardData[],
+  player: PlayerProps
 };
 
 export function App(props: Props) {
-  const {films} = props;
+  const {films, player} = props;
   return (
     <BrowserRouter>
       <Routes>
@@ -34,19 +35,19 @@ export function App(props: Props) {
           />
           <Route
             path={RoutePathname.MY_LIST}
-            element={<CheckAuth><MyList /></CheckAuth>}
+            element={<CheckAuth><MyList films={films}/></CheckAuth>}
           />
           <Route
             path={`${RoutePathname.FILMS}/:id`}
-            element={<Film />}
+            element={<Film films={films}/>}
           />
           <Route
             path={`${RoutePathname.FILMS}/:id/${RoutePathname.REVIEW}`}
-            element={<AddReview />}
+            element={<AddReview films={films}/>}
           />
           <Route
             path={`${RoutePathname.PLAYER}`}
-            element={<Player />}
+            element={<Player {...player}/>}
           />
         </Route>
         <Route path='*' element={<ErrorPage />} />

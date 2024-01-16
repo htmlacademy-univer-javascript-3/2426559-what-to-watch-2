@@ -1,6 +1,6 @@
-import {FilmPlayer} from 'src/types.ts';
+import {PlayerProps} from 'src/types.ts';
 
 
-export const playerMocks: FilmPlayer = {
+export const playerMocks: PlayerProps = {
   src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
 };
