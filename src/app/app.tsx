@@ -1,13 +1,13 @@
 import { Main } from 'src/pages/main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SignIn } from 'src/pages/sign-in';
-import { MyList } from 'src/pages/mylist';
+import { MyList } from 'src/pages/my-list';
 import { Film } from 'src/pages/film';
 import { AddReview } from 'src/pages/add-review';
 import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
-import { CheckAuth } from 'src/check-auth';
+import { CheckAuth } from 'src/components/check-auth';
 import { FilmCardData} from 'src/types';
 
 type Props = {
