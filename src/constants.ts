@@ -6,3 +6,5 @@ export const enum RoutePathname {
     REVIEW = 'review',
     PLAYER = 'player'
   }
+
+  export const TimeoutPlayer = 1000
