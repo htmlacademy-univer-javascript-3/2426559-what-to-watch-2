@@ -1,19 +1,19 @@
-import {Link, useParams} from 'react-router-dom';
-import {Header} from 'src/components/header';
-import {Footer} from 'src/components/footer';
-import {FilmsList} from 'src/components/films-list';
+import { Link, useParams } from 'react-router-dom';
+import { Header } from 'src/components/header';
+import { Footer } from 'src/components/footer';
+import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
-import {RoutePathname} from 'src/constants';
-import {FilmCardData} from 'src/types';
+import { RoutePathname } from 'src/constants';
+import { FilmCardData } from 'src/types';
 
 type Props = {
   films: FilmCardData[]
 }
 
 export function Film(props: Props) {
-  const {films} = props;
-  const {id = ''} = useParams();
-  const film = films.find((film) => film.id === id);
+  const { films } = props;
+  const { id = '' } = useParams();
+  const film = films.find((f) => f.id === id);
   if (!film) {
     return null;
   }
@@ -34,10 +34,10 @@ export function Film(props: Props) {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-          <img src={preview} alt={title}/>
+            <img src={preview} alt={title} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
-          <Header/>
+          <Header />
           <div className="film-card__wrap">
             <div className="film-card__desc">
               <h2 className="film-card__title">{title}</h2>
@@ -46,7 +46,7 @@ export function Film(props: Props) {
                 <span className="film-card__year">{year}</span>
               </p>
               <div className="film-card__buttons">
-              <LinkButton
+                <LinkButton
                   link={`/${RoutePathname.PLAYER}`}
                   className="btn btn--play film-card__button"
                   svgViewBox="0 0 19 19"
@@ -79,24 +79,24 @@ export function Film(props: Props) {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-            <img src={poster} alt={`${title} poster`} width="218" height="327"/>
+              <img src={poster} alt={`${title} poster`} width="218" height="327" />
             </div>
             <div className="film-card__desc">
               <nav className="film-nav film-card__nav">
                 <ul className="film-nav__list">
                   <li className="film-nav__item film-nav__item--active">
                     <a href="#" className="film-nav__link">
-                                            Overview
+                      Overview
                     </a>
                   </li>
                   <li className="film-nav__item">
                     <a href="#" className="film-nav__link">
-                                            Details
+                      Details
                     </a>
                   </li>
                   <li className="film-nav__item">
                     <a href="#" className="film-nav__link">
-                                            Reviews
+                      Reviews
                     </a>
                   </li>
                 </ul>
@@ -109,7 +109,7 @@ export function Film(props: Props) {
                 </p>
               </div>
               <div className="film-card__text">
-              <p>{description}</p>
+                <p>{description}</p>
                 <p className="film-card__director"><strong>Director: {director}</strong></p>
                 <p className="film-card__starring"><strong>Starring: {starring.join(', ')}</strong></p>
               </div>
@@ -120,9 +120,9 @@ export function Film(props: Props) {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmsList films={films}/>
+          <FilmsList films={films} />
         </section>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

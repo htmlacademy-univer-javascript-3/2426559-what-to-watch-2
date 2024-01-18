@@ -7,24 +7,24 @@ type Props = {
 }
 
 export function FilmsList({ films }: Props) {
-    const [activeFilm, setActiveFilm] = useState<FilmCardData | null>(null);
-    const handleMouseEnter = useCallback((film: FilmCardData) => {
-        setActiveFilm(film);
-      }, []);
-      const handleMouseLeave = useCallback(() => {
-        setActiveFilm(null);
-      }, []);
-      console.log(activeFilm);
-      return (
-        <div className="catalog__films-list">
-          {films.map((film) => (
-            <FilmCard
-              key={film.id}
-              onMouseEnter={() => handleMouseEnter(film)}
-              onMouseLeave={handleMouseLeave}
-              {...film}
-            />
-          ))}
-        </div>
-      );
+  const [activeFilm, setActiveFilm] = useState<FilmCardData | null>(null);
+  const handleMouseEnter = useCallback((film: FilmCardData) => {
+    setActiveFilm(film);
+  }, []);
+  const handleMouseLeave = useCallback(() => {
+    setActiveFilm(null);
+  }, []);
+  console.log(activeFilm);
+  return (
+    <div className="catalog__films-list">
+      {films.map((film) => (
+        <FilmCard
+          key={film.id}
+          onMouseEnter={() => handleMouseEnter(film)}
+          onMouseLeave={handleMouseLeave}
+          {...film}
+        />
+      ))}
+    </div>
+  );
 }

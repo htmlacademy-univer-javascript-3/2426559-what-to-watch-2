@@ -14,22 +14,22 @@ type ButtonProps = {
 }
 
 export function LinkButton({ link, className, svgViewBox, svgWidth, svgHeight, icon, label, children }: ButtonProps) {
-    const navigate = useNavigate();
-    const handleClick = useCallback(() => {
-        navigate(link);
-      }, [navigate,link]);
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => {
+    navigate(link);
+  }, [navigate,link]);
 
-    return (
-        <button
-            className={className}
-            type="button"
-            onClick={handleClick}
-        >
-            <svg viewBox={svgViewBox} width={svgWidth} height={svgHeight}>
-                <use xlinkHref={icon}></use>
-            </svg>
-            <span>{label}</span>
-            {children}
-        </button>
-    );
+  return (
+    <button
+      className={className}
+      type="button"
+      onClick={handleClick}
+    >
+      <svg viewBox={svgViewBox} width={svgWidth} height={svgHeight}>
+        <use xlinkHref={icon}></use>
+      </svg>
+      <span>{label}</span>
+      {children}
+    </button>
+  );
 }

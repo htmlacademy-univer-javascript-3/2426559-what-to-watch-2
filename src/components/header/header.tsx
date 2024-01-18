@@ -11,7 +11,7 @@ type Props = {
 export function Header(props: Props) {
   const {breadcrumbs, headerClass} = props;
   return (
-    <header className={`page-header ${headerClass ? '' : 'film-card__head'} ${headerClass}`}>
+    <header className={`page-header ${headerClass ? `${headerClass}` : 'film-card__head'}`}>
       <div className="logo">
         <Link to={RoutePathname.MAIN} className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>

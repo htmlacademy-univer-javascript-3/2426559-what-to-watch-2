@@ -1,1 +1,1 @@
-export { FilmCard } from "./film-card";
+export { FilmCard } from './film-card';

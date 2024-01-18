@@ -12,7 +12,7 @@ export type FilmCardData = {
     year: number
   }
 
-  export type PlayerProps = {
+export type PlayerProps = {
     src: string
   }
 

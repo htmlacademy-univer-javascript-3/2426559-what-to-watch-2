@@ -2,7 +2,7 @@ import { Header } from 'src/components/header';
 import { Footer } from 'src/components/footer';
 import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
-import { FilmCardData } from "src/types";
+import { FilmCardData } from 'src/types';
 import { RoutePathname } from 'src/constants';
 
 export type Props = {
