@@ -8,7 +8,7 @@ import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
 import { CheckAuth } from 'src/components/check-auth';
-import { FilmCardData, PlayerProps} from 'src/types';
+import { FilmCardData, PlayerProps } from 'src/types';
 
 type Props = {
   films: FilmCardData[],
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export function App(props: Props) {
-  const {films, player} = props;
+  const { films, player } = props;
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +25,7 @@ export function App(props: Props) {
             index
             element={(
               <Main
-                films = {films}
+                films={films}
               />
             )}
           />
@@ -35,21 +35,25 @@ export function App(props: Props) {
           />
           <Route
             path={RoutePathname.MY_LIST}
-            element={<CheckAuth><MyList films={films}/></CheckAuth>}
+            element={<CheckAuth><MyList films={films} /></CheckAuth>}
           />
           <Route
             path={`${RoutePathname.FILMS}/:id`}
-            element={<Film films={films}/>}
+            element={<Film films={films} />}
           />
           <Route
             path={`${RoutePathname.FILMS}/:id/${RoutePathname.REVIEW}`}
-            element={<AddReview films={films}/>}
+            element={<AddReview films={films} />}
           />
           <Route
-            path={`${RoutePathname.PLAYER}`}
-            element={<Player {...player}/>}
+            path={RoutePathname.PLAYER}
+            element={<Player {...player} />}
           />
         </Route>
+        <Route
+          path={RoutePathname.NOT_FOUND}
+          element={<ErrorPage />}
+        />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

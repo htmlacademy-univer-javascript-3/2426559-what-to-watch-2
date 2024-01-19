@@ -9,6 +9,7 @@ export type FilmCardData = {
     raiting: number,
     starring: string[],
     title: string,
+    videoSrc: string,
     year: number
   }
 

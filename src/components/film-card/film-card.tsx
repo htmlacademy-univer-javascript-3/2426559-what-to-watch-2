@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FilmCardData } from 'src/types';
 import { RoutePathname } from 'src/constants';
+import { VideoPlayer } from 'src/components/video-player';
 
 type Props = FilmCardData & {
   onMouseEnter?: () => void,
-  onMouseLeave?: () => void
+  onMouseLeave?: () => void,
+  isActive: boolean
 };
 
 export function FilmCard(props: Props) {
@@ -13,7 +15,9 @@ export function FilmCard(props: Props) {
     title,
     id,
     onMouseEnter,
-    onMouseLeave
+    onMouseLeave,
+    isActive,
+    videoSrc
   } = props;
   return (
     <article
@@ -21,8 +25,16 @@ export function FilmCard(props: Props) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="small-film-card__image">
-        <img src={preview} alt={title} width="280" height="175" />
+      <div className="small-film-card__image film-preview">
+        {isActive && (
+          <VideoPlayer
+            src={videoSrc}
+            preview={preview}
+          />
+        )}
+        {!isActive && (
+          <img src={preview} alt={title} />
+        )}
       </div>
       <h3 className="small-film-card__title">
         <Link

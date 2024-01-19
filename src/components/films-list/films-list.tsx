@@ -14,7 +14,6 @@ export function FilmsList({ films }: Props) {
   const handleMouseLeave = useCallback(() => {
     setActiveFilm(null);
   }, []);
-  console.log(activeFilm);
   return (
     <div className="catalog__films-list">
       {films.map((film) => (
@@ -22,6 +21,7 @@ export function FilmsList({ films }: Props) {
           key={film.id}
           onMouseEnter={() => handleMouseEnter(film)}
           onMouseLeave={handleMouseLeave}
+          isActive={activeFilm === film}
           {...film}
         />
       ))}
