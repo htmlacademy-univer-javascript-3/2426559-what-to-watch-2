@@ -842,6 +842,11 @@ main {
   background: #fd612ead;
   border-radius: 15px; }
 
+  .film-preview {
+    width: 280px;
+    height: 175px;
+}
+
 .film-nav__list {
   padding: 0;
   margin: 0;
