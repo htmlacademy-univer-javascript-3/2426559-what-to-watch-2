@@ -18,6 +18,9 @@ export function Film(props: Props) {
   if (!(film && id)) {
     return <Navigate to={`/${RoutePathname.NOT_FOUND}`}/>;
   }
+  const moreLikeFilms = films
+    .filter((f) => f.genre === film.genre && f.id !== film.id)
+    .slice(0, 4);
   const {
     title,
     preview,
@@ -78,7 +81,7 @@ export function Film(props: Props) {
               <img src={poster} alt={`${title} poster`} width="218" height="327" />
             </div>
             <div className="film-card__desc">
-            <Tabs film={film} />
+              <Tabs film={film} />
             </div>
           </div>
         </div>
@@ -86,7 +89,7 @@ export function Film(props: Props) {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmsList films={films} />
+          <FilmsList films={moreLikeFilms}/>
         </section>
         <Footer />
       </div>
