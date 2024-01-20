@@ -5,6 +5,7 @@ import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
 import { RoutePathname } from 'src/constants';
 import { FilmCardData } from 'src/types';
+import {Tabs} from 'src/components/tabs';
 
 type Props = {
   films: FilmCardData[]
@@ -22,12 +23,7 @@ export function Film(props: Props) {
     preview,
     genre,
     year,
-    poster,
-    raiting,
-    numberOfRatings,
-    director,
-    starring,
-    description
+    poster
   } = film;
   return (
     <>
@@ -82,37 +78,7 @@ export function Film(props: Props) {
               <img src={poster} alt={`${title} poster`} width="218" height="327" />
             </div>
             <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="#" className="film-nav__link">
-                      Overview
-                    </a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
-                      Details
-                    </a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="film-rating">
-                <div className="film-rating__score">{raiting}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">{numberOfRatings}</span>
-                </p>
-              </div>
-              <div className="film-card__text">
-                <p>{description}</p>
-                <p className="film-card__director"><strong>Director: {director}</strong></p>
-                <p className="film-card__starring"><strong>Starring: {starring.join(', ')}</strong></p>
-              </div>
+            <Tabs film={film} />
             </div>
           </div>
         </div>
