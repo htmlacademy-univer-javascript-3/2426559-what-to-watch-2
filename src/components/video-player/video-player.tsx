@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { TimeoutPlayer } from 'src/constants';
+import { TIMOUT_PLAYER } from 'src/constants';
 
 type Props = {
     src: string,
@@ -14,7 +14,7 @@ export function VideoPlayer(props: Props) {
       if (videoRef.current) {
         videoRef.current.play();
       }
-    }, TimeoutPlayer);
+    }, TIMOUT_PLAYER);
   }, []);
 
   return (

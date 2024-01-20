@@ -8,4 +8,6 @@ export const enum RoutePathname {
     NOT_FOUND = '404'
   }
 
-export const TimeoutPlayer = 1000;
+export const TIMOUT_PLAYER = 1000;
+
+export const SECOND_COUNT = 60;
