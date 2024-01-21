@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from 'src/store';
 import {changeGenre} from 'src/store/action';
 import {ALL_GENRES} from 'src/constants';
 import {FilmCardData} from 'src/types';
-import './list-of-genres.css';
+import './genres-catalog.css';
 
 
 type Props = {
@@ -36,12 +36,12 @@ export function GenresCatalog(props: Props) {
               type="button"
               onClick={() => handleClick(filmGenre)}
               className="catalog__genres-link clean-button"
-              >
-                {filmGenre}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
+            >
+              {filmGenre}
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}

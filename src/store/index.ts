@@ -6,8 +6,8 @@ import { State, AppDispatch } from './types';
 
 
 export const store = configureStore({
-    reducer: updateStore,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+  reducer: updateStore,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 });
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
