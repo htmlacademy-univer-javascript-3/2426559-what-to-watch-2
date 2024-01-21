@@ -11,3 +11,5 @@ export const enum RoutePathname {
 export const TIMOUT_PLAYER = 1000;
 
 export const SECOND_COUNT = 60;
+
+export const ALL_GENRES = 'All films';
