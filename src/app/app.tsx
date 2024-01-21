@@ -1,5 +1,8 @@
 import { Main } from 'src/pages/main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from 'src/store';
+import { useFilms } from 'src/hooks';
 import { SignIn } from 'src/pages/sign-in';
 import { MyList } from 'src/pages/my-list';
 import { Film } from 'src/pages/film';
@@ -8,15 +11,15 @@ import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
 import { CheckAuth } from 'src/components/check-auth';
-import { FilmCardData, PlayerProps } from 'src/types';
+import { PlayerProps } from 'src/types';
 
 type Props = {
-  films: FilmCardData[],
   player: PlayerProps
 };
 
-export function App(props: Props) {
-  const { films, player } = props;
+function Router(props: Props) {
+  const { player } = props;
+  const films = useFilms();
   return (
     <BrowserRouter>
       <Routes>
@@ -57,5 +60,14 @@ export function App(props: Props) {
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+export function App(props: Props) {
+  const { player } = props;
+  return (
+    <Provider store={store}>
+      <Router player={player} />
+    </Provider>
   );
 }

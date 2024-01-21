@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {filmsMocks} from 'src/mocks/films';
 import { playerMocks } from 'src/mocks/player';
 import { App } from './app/app';
 
@@ -11,7 +10,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      films={filmsMocks}
       player={playerMocks}
     />
   </React.StrictMode>
