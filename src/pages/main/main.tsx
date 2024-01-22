@@ -5,7 +5,7 @@ import { GenresCatalog } from 'src/components/genres-catalogue';
 import { LinkButton } from 'src/components/buttons';
 import { FilmCardData } from 'src/types';
 import { RoutePathname } from 'src/constants';
-import {useFiltredFilms} from 'src/hooks';
+import { useFiltredFilms } from 'src/hooks';
 
 export type Props = {
   films: FilmCardData[]
@@ -68,15 +68,10 @@ export function Main(props: Props) {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresCatalog films={films}/>
-          <FilmsList films={filtredFilms}/>
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          <GenresCatalog films={films} />
+          <FilmsList films={filtredFilms} />
         </section>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

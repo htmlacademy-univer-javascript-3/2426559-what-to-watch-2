@@ -130,4 +130,36 @@ export const filmsMocks: FilmCardData[] = [
     videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     year: 2018
   },
+  {
+    description: '9The Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
+    director: '9Wes Anderson',
+    genre: 'Horror',
+    id: '9',
+    minutes: 114,
+    numberOfRatings: 8280,
+    poster: 'img/aviator.jpg',
+    preview: 'img/aviator.jpg',
+    raiting: 9.9,
+    reviews: reviews,
+    starring: ['8Bill Murray', 'Edward Norton', 'Jude Law', 'Willem Dafoe', 'and other'],
+    title: 'Aviator',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    year: 2019
+  },
+  {
+    description: '10The Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
+    director: '10Wes Anderson',
+    genre: 'Horror',
+    id: '10',
+    minutes: 104,
+    numberOfRatings: 8280,
+    poster: 'img/revenant.jpg',
+    preview: 'img/revenant.jpg',
+    raiting: 8.9,
+    reviews: reviews,
+    starring: ['8Bill Murray', 'Edward Norton', 'Jude Law', 'Willem Dafoe', 'and other'],
+    title: 'Revenant',
+    videoSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    year: 2020
+  },
 ];
