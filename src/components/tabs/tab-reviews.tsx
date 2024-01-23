@@ -30,7 +30,7 @@ export function TabReviews() {
               <blockquote className="review__quote">
                 <p className="review__text">{comment}</p>
                 <footer className="review__details">
-                <cite className="review__author">{user}</cite>
+                  <cite className="review__author">{user}</cite>
                   <time className="review__date" dateTime={format(new Date(date), 'MMMM d, yyyy-MM-dd')}>
                     {format(new Date(date), 'MMMM d, yyyy')}
                   </time>

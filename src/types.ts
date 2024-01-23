@@ -11,7 +11,7 @@ export type PlayerProps = {
     src: string
   }
 
-  export type TFilm = {
+export type TFilm = {
     backgroundColor: string,
     backgroundImage: string,
     description: string,
@@ -29,15 +29,15 @@ export type PlayerProps = {
     videoSrc: string
   }
 
-  export type TFilmCard = {
+export type TFilmCard = {
     genre: string,
     id: string,
     name: string,
     previewImage: string,
     previewVideoLink: string
   }
-  
-  export type TFilmPromo = {
+
+export type TFilmPromo = {
     backgroundImage: string,
     genre: string,
     id: string,

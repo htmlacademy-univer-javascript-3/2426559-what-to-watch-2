@@ -23,8 +23,8 @@ export function Film() {
     return null;
   }
   const moreLikeFilms = filmsSimilar
-  ?.filter(({ genre, id }) => genre === film.genre && id === film.id)
-  .slice(0, 4);
+    ?.filter(({ genre, id }) => genre === film.genre && id === film.id)
+    .slice(0, 4);
   const {
     name,
     backgroundImage,

@@ -6,9 +6,8 @@ import {RoutePathname} from 'src/constants';
 import {ReviewForm} from 'src/components/review-form';
 
 
-
 export function AddReview() {
-  
+
   const {id = ''} = useParams();
   const {film} = useAppSelector((state) => state);
   useFetchFilm(id);

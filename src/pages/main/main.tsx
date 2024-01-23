@@ -5,15 +5,36 @@ import { GenresCatalog } from 'src/components/genres-catalogue';
 import { LinkButton } from 'src/components/buttons';
 import { RoutePathname } from 'src/constants';
 import { useFiltredFilms } from 'src/hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { ReduxStateStatus } from 'src/constants';
 import { useAppDispatch, useAppSelector } from 'src/store';
 import { fetchFilms, fetchPromoFilm } from 'src/store/api';
+import {Spinner} from 'src/components/spinner';
 
 export function Main() {
-  
-  const { films, promoFilm } = useAppSelector((state) => state);
+
+  const dispatch = useAppDispatch();
+  const {enqueueSnackbar} = useSnackbar();
+  const [loading, setLoading] = useState(false);
+  const {films, promoFilm} = useAppSelector((state) => state);
+  useEffect(() => {
+    setLoading(true);
+    dispatch(fetchFilms())
+      .then((res) => {
+        if (res.meta.requestStatus === ReduxStateStatus.rejected) {
+          enqueueSnackbar(
+            'Не удалось загрузить список фильмов',
+            {variant: 'error'}
+          );
+        }
+        return null;
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+    dispatch(fetchPromoFilm());
+  }, [dispatch, enqueueSnackbar]);
   const filtredFilms = useFiltredFilms();
   let filmPromoContent = null;
   if (promoFilm) {
@@ -24,15 +45,12 @@ export function Main() {
           <img src={backgroundImage} alt={name} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
-
         <Header />
-
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
               <img src={posterImage} alt="The Grand Budapest Hotel poster" />
             </div>
-
             <div className="film-card__desc">
               <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
@@ -73,8 +91,13 @@ export function Main() {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresCatalog films={films} />
-          <FilmsList films={filtredFilms} />
+          {loading && <Spinner/>}
+          {!loading && (
+            <>
+              {films && <GenresCatalog films={films}/>}
+              {filtredFilms && <FilmsList films={filtredFilms}/>}
+            </>
+          )}
         </section>
         <Footer />
       </div>

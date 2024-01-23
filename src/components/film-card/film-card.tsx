@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { RoutePathname } from 'src/constants';
 import { VideoPlayer } from 'src/components/video-player';
 import {TFilmCard} from 'src/types';
+import './film-card';
 
 type Props = TFilmCard & {
   onMouseEnter?: () => void,

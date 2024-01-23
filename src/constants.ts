@@ -8,7 +8,7 @@ export const enum RoutePathname {
     NOT_FOUND = '404'
   }
 
-  export enum ReduxStateStatus {
+export enum ReduxStateStatus {
     pending = 'pending',
     fulfilled = 'fulfilled',
     rejected = 'rejected',
