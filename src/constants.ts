@@ -8,8 +8,11 @@ export const enum RoutePathname {
     NOT_FOUND = '404'
   }
 
-export const TIMOUT_PLAYER = 1000;
-
-export const SECOND_COUNT = 60;
+  export enum ReduxStateStatus {
+    pending = 'pending',
+    fulfilled = 'fulfilled',
+    rejected = 'rejected',
+    idle = 'idle'
+  }
 
 export const ALL_GENRES = 'All films';

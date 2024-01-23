@@ -1,25 +1,28 @@
-import {useEffect, useState} from 'react';
-import {Link, useLocation} from 'react-router-dom';
-import {TabOverview} from 'src/components/tabs/tab-overview';
-import {TabReviews} from 'src/components/tabs/tab-reviews';
-import {TabDetails} from 'src/components/tabs/tab-details';
-import {TAB, TABS} from './constants';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { TabOverview } from 'src/components/tabs/tab-overview';
+import { TabReviews } from 'src/components/tabs/tab-reviews';
+import { TabDetails } from 'src/components/tabs/tab-details';
+import { TFilm } from 'src/types';
+import { Tab, TABS } from './constants';
 
+type Props = {
+  film: TFilm
+}
 
-
-export function Tabs() {
-  
-  const {pathname, hash} = useLocation();
-  const [currentTab, setCurrentTab] = useState(hash || TAB.overview);
+export function Tabs(props: Props) {
+  const { film } = props;
+  const { pathname, hash } = useLocation();
+  const [currentTab, setCurrentTab] = useState(hash || Tab.overview);
   useEffect(() => {
     switch (hash) {
-      case TAB.overview:
-      case TAB.reviews:
-      case TAB.details:
+      case Tab.overview:
+      case Tab.reviews:
+      case Tab.details:
         setCurrentTab(hash);
         break;
       default:
-        setCurrentTab(TAB.overview);
+        setCurrentTab(Tab.overview);
     }
   }, [hash]);
   return (
@@ -41,9 +44,9 @@ export function Tabs() {
           })}
         </ul>
       </nav>
-      {currentTab === TAB.overview && <TabOverview film={film}/>}
-      {currentTab === TAB.reviews && <TabReviews reviews={reviews}/>}
-      {currentTab === TAB.details && <TabDetails film={film}/>}
+      {currentTab === Tab.overview && <TabOverview film={film} />}
+      {currentTab === Tab.reviews && <TabReviews />}
+      {currentTab === Tab.details && <TabDetails film={film} />}
     </>
   );
 }

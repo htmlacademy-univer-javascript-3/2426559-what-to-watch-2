@@ -1,15 +1,26 @@
+import { TFilm } from 'src/types';
 
+type Props = {
+  film: TFilm
+}
 
+export function TabOverview(props: Props) {
+  const { film } = props;
+  const {
+    rating,
+    scoresCount,
+    director,
+    starring,
+    description
+  } = film;
 
-export function TabOverview() {
-  
   return (
     <>
       <div className="film-rating">
-        <div className="film-rating__score">{raiting}</div>
+        <div className="film-rating__score">{rating}</div>
         <p className="film-rating__meta">
           <span className="film-rating__level">Very good</span>
-          <span className="film-rating__count">{numberOfRatings} ratings</span>
+          <span className="film-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
       <div className="film-card__text">

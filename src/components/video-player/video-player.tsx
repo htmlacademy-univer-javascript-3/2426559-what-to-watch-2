@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { TIMOUT_PLAYER } from 'src/constants';
+import {millisecondsInSecond} from 'date-fns';
 
 type Props = {
     src: string,
@@ -14,7 +14,7 @@ export function VideoPlayer(props: Props) {
       if (videoRef.current) {
         videoRef.current.play();
       }
-    }, TIMOUT_PLAYER);
+    }, millisecondsInSecond);
   }, []);
 
   return (

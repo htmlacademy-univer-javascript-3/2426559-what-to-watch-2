@@ -2,9 +2,12 @@ import {useCallback, useMemo} from 'react';
 import {useAppDispatch, useAppSelector} from 'src/store';
 import {changeGenre} from 'src/store/action';
 import {ALL_GENRES} from 'src/constants';
+import {TFilmCard} from 'src/types';
 import './genres-catalog.css';
 
-
+type Props = {
+  films: TFilmCard[]
+}
 
 
 export function GenresCatalog(props: Props) {
@@ -12,7 +15,7 @@ export function GenresCatalog(props: Props) {
   const currentGenre = useAppSelector((state) => state.genre);
   const dispatch = useAppDispatch();
   const handleClick = useCallback(
-    (genre: string) => dispatch(changeGenre(genre)),
+    (genre: string) => () => dispatch(changeGenre(genre)),
     [dispatch]
   );
   const listOfGenres = useMemo(() => {
@@ -31,7 +34,7 @@ export function GenresCatalog(props: Props) {
           <li key={filmGenre} className={className}>
             <button
               type="button"
-              onClick={() => handleClick(filmGenre)}
+              onClick={handleClick(filmGenre)}
               className="catalog__genres-link clean-button"
             >
               {filmGenre}

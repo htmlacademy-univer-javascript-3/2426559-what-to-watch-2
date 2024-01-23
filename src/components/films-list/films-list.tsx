@@ -1,17 +1,17 @@
 import { useCallback, useState } from 'react';
 import { FilmCard } from 'src/components/film-card';
-import { FilmCardData } from 'src/types';
+import {TFilmCard} from 'src/types';
 
 type Props = {
-    films: FilmCardData[]
+    films: TFilmCard[]
 }
 
 const FILMS_TO_SHOW_AMOUNT = 8;
 
 export function FilmsList({ films }: Props) {
-  const [activeFilm, setActiveFilm] = useState<FilmCardData | null>(null);
+  const [activeFilm, setActiveFilm] = useState<TFilmCard | null>(null);
   const [countOfFilmsShown, setCountOfFilmsShown] = useState<number>(FILMS_TO_SHOW_AMOUNT);
-  const handleMouseEnter = useCallback((film: FilmCardData) => {
+  const handleMouseEnter = useCallback((film: TFilmCard) => {
     setActiveFilm(film);
   }, []);
   const handleMouseLeave = useCallback(() => {

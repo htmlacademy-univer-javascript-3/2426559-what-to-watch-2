@@ -1,6 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { ALL_GENRES } from 'src/constants';
-import {changeGenre} from './action';
 import {State} from './types';
 import {
   changeGenre,
