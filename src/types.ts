@@ -59,3 +59,9 @@ export type TUser = {
   email: string,
   token: string
 }
+
+export type TCommentRequest = {
+  comment: string,
+  rating: number,
+  filmId: string
+}

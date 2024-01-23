@@ -9,7 +9,7 @@ import {
   updatePromoFilm,
   updateAuthorizationStatus
 } from 'src/store/action';
-import {TComment, TFilm, TFilmCard, TFilmPromo, TLoginRequest, TUser} from 'src/types';
+import {TComment, TFilm, TCommentRequest, TFilmCard, TFilmPromo, TLoginRequest, TUser} from 'src/types';
 import {AppDispatch, State} from './types';
 import {deleteToken, getSavedToken, saveToken} from 'src/token';
 import {AuthorizationStatus} from 'src/constants';
@@ -103,8 +103,8 @@ export const getLogin = createAsyncThunk<void, undefined, {
       }
     },
   );
-  
-  export const postLogin = createAsyncThunk<void, TLoginRequest, {
+
+export const postLogin = createAsyncThunk<void, TLoginRequest, {
     dispatch: AppDispatch,
     state: State,
     extra: AxiosInstance
@@ -116,8 +116,8 @@ export const getLogin = createAsyncThunk<void, undefined, {
       dispatch(updateAuthorizationStatus(AuthorizationStatus.authorized));
     },
   );
-  
-  export const fetchLogout = createAsyncThunk<void, undefined, {
+
+export const fetchLogout = createAsyncThunk<void, undefined, {
     dispatch: AppDispatch,
     state: State,
     extra: AxiosInstance
@@ -128,5 +128,24 @@ export const getLogin = createAsyncThunk<void, undefined, {
       await api.delete('/logout', {headers: {'X-Token': token}});
       deleteToken();
       dispatch(updateAuthorizationStatus(AuthorizationStatus.notAuthorized));
+    },
+  );
+
+export const postComments = createAsyncThunk<void, TCommentRequest, {
+    dispatch: AppDispatch,
+    state: State,
+    extra: AxiosInstance
+  }>(
+    'postComments',
+    async (arg, {dispatch, extra: api}) => {
+      const {filmId, comment, rating} = arg;
+      const token = getSavedToken();
+      const {data} = await api.post<TUser>(
+        `/comments/${filmId}`,
+        {comment, rating},
+        {headers: {'X-Token': token}}
+      );
+      saveToken(data.token);
+      dispatch(updateAuthorizationStatus(AuthorizationStatus.authorized));
     },
   );

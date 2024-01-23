@@ -1,20 +1,25 @@
-import {useEffect} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Header } from 'src/components/header';
 import { Footer } from 'src/components/footer';
 import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
-import { RoutePathname } from 'src/constants';
-import {Tabs} from 'src/components/tabs';
-import {useAppDispatch, useAppSelector} from 'src/store';
-import {fetchFilmSimilar} from 'src/store/api';
-import {useFetchFilm} from 'src/hooks';
+import { AuthorizationStatus, RoutePathname } from 'src/constants';
+import { Tabs } from 'src/components/tabs';
+import { useAppDispatch, useAppSelector } from 'src/store';
+import { fetchFilmSimilar } from 'src/store/api';
+import { useFetchFilm } from 'src/hooks';
 
 
 export function Film() {
-  const { id = ''} = useParams();
+  const { id = '' } = useParams();
   const dispatch = useAppDispatch();
-  const {film, filmsSimilar} = useAppSelector((state) => state);
+  const {
+    film,
+    filmsSimilar,
+    authorizationStatus
+  } = useAppSelector((state) => state);
+  const isAuthorized = authorizationStatus === AuthorizationStatus.authorized;
   useFetchFilm(id);
   useEffect(() => {
     dispatch(fetchFilmSimilar(id));
@@ -69,12 +74,14 @@ export function Film() {
                 >
                   <span className="film-card__count">9</span>
                 </LinkButton>
-                <Link
-                  to={`/${RoutePathname.FILMS}/${id}/${RoutePathname.REVIEW}`}
-                  className="btn film-card__button"
-                >
-                  Add review
-                </Link>
+                {isAuthorized && (
+                  <Link
+                    to={`/${RoutePathname.FILMS}/${id}/${RoutePathname.REVIEW}`}
+                    className="btn film-card__button"
+                  >
+                    Add review
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -93,7 +100,7 @@ export function Film() {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          {moreLikeFilms && <FilmsList films={moreLikeFilms}/>}
+          {moreLikeFilms && <FilmsList films={moreLikeFilms} />}
         </section>
         <Footer />
       </div>

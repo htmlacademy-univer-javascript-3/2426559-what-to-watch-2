@@ -42,14 +42,19 @@ function Router(props: Props) {
               />
               <Route
                 path={RoutePathname.MY_LIST}
-                element={<PrivateRoute><MyList/></PrivateRoute>}              />
+                element={<PrivateRoute><MyList/></PrivateRoute>}
+              />
               <Route
                 path={`${RoutePathname.FILMS}/:id`}
                 element={<Film/>}
               />
               <Route
                 path={`${RoutePathname.FILMS}/:id/${RoutePathname.REVIEW}`}
-                element={<AddReview/>}
+                element={(
+                  <PrivateRoute navigateTo={`/${RoutePathname.LOGIN}`}>
+                    <AddReview/>
+                  </PrivateRoute>
+                )}
               />
               <Route
                 path={RoutePathname.PLAYER}

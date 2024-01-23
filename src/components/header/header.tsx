@@ -49,7 +49,7 @@ export function Header(props: Props) {
           </div>
         </li>
         <li className="user-block__item">
-        {isAuthorized && (
+          {isAuthorized && (
             <div className="user-block__link" onClick={handleLogout}>
               Sign out
             </div>
