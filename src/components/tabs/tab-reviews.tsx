@@ -1,13 +1,8 @@
 import { format } from 'date-fns';
-import { FilmReview } from 'src/types';
 
 
-type Props = {
-    reviews: FilmReview[]
-}
-
-export function TabReviews(props: Props) {
-  const { reviews } = props;
+export function TabReviews() {
+  
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">

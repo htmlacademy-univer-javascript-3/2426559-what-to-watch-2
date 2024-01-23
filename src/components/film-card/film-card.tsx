@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { FilmCardData } from 'src/types';
 import { RoutePathname } from 'src/constants';
 import { VideoPlayer } from 'src/components/video-player';
 

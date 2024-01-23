@@ -3,17 +3,12 @@ import {Link, useLocation} from 'react-router-dom';
 import {TabOverview} from 'src/components/tabs/tab-overview';
 import {TabReviews} from 'src/components/tabs/tab-reviews';
 import {TabDetails} from 'src/components/tabs/tab-details';
-import {FilmCardData} from 'src/types';
 import {TAB, TABS} from './constants';
 
 
-type Props = {
-  film: FilmCardData
-}
 
-export function Tabs(props: Props) {
-  const {film} = props;
-  const {reviews} = film;
+export function Tabs() {
+  
   const {pathname, hash} = useLocation();
   const [currentTab, setCurrentTab] = useState(hash || TAB.overview);
   useEffect(() => {

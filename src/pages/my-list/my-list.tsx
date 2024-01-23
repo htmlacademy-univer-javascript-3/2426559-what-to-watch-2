@@ -1,13 +1,10 @@
 import { Header } from 'src/components/header';
 import { Footer } from 'src/components/footer';
 import { FilmsList } from 'src/components/films-list';
-import { FilmCardData } from 'src/types';
 
-type Props = {
-  films: FilmCardData[]
-}
 
-export function MyList({ films }: Props) {
+
+export function MyList() {
   const breadcrumbs = (
     <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
   );
@@ -19,7 +16,7 @@ export function MyList({ films }: Props) {
       />
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <FilmsList films={films} />
+        <FilmsList films={} />
       </section>
       <Footer />
     </div>

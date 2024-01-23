@@ -4,30 +4,19 @@ import { Footer } from 'src/components/footer';
 import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
 import { RoutePathname } from 'src/constants';
-import { FilmCardData } from 'src/types';
 import {Tabs} from 'src/components/tabs';
 
-type Props = {
-  films: FilmCardData[]
-}
 
-export function Film(props: Props) {
-  const { films } = props;
+
+export function Film() {
   const { id } = useParams();
-  const film = films.find((f) => f.id === id);
   if (!(film && id)) {
     return <Navigate to={`/${RoutePathname.NOT_FOUND}`}/>;
   }
   const moreLikeFilms = films
     .filter((f) => f.genre === film.genre && f.id !== film.id)
     .slice(0, 4);
-  const {
-    title,
-    preview,
-    genre,
-    year,
-    poster
-  } = film;
+  
   return (
     <>
       <section className="film-card film-card--full">

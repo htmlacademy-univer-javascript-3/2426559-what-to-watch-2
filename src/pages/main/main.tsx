@@ -3,24 +3,18 @@ import { Footer } from 'src/components/footer';
 import { FilmsList } from 'src/components/films-list';
 import { GenresCatalog } from 'src/components/genres-catalogue';
 import { LinkButton } from 'src/components/buttons';
-import { FilmCardData } from 'src/types';
 import { RoutePathname } from 'src/constants';
 import { useFiltredFilms } from 'src/hooks';
 
-export type Props = {
-  films: FilmCardData[]
-}
 
-export function Main(props: Props) {
-  const { films } = props;
-  const film = films[0];
-  const { title, genre, year, preview, poster } = film;
+
+export function Main() {
   const filtredFilms = useFiltredFilms();
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={preview} alt={title} />
+          <img src={} alt={} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
 
@@ -29,14 +23,14 @@ export function Main(props: Props) {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={poster} alt={title} />
+              <img src={} alt={} />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{title}</h2>
+              <h2 className="film-card__title">{}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{year}</span>
+                <span className="film-card__genre">{}</span>
+                <span className="film-card__year">{}</span>
               </p>
               <div className="film-card__buttons">
                 <LinkButton
@@ -68,7 +62,7 @@ export function Main(props: Props) {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresCatalog films={films} />
+          <GenresCatalog films={} />
           <FilmsList films={filtredFilms} />
         </section>
         <Footer />

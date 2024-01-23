@@ -1,20 +1,10 @@
-import {FilmCardData} from 'src/types';
 import {getRunTime} from './helpers';
 
 
-type Props = {
-  film: FilmCardData
-}
 
-export function TabDetails(props: Props) {
-  const {film} = props;
-  const {
-    director,
-    starring,
-    genre,
-    year,
-    minutes
-  } = film;
+
+export function TabDetails() {
+  
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">

@@ -1,19 +1,8 @@
-import { FilmCardData } from 'src/types';
 
 
-type Props = {
-    film: FilmCardData
-}
 
-export function TabOverview(props: Props) {
-  const {film} = props;
-  const {
-    raiting,
-    numberOfRatings,
-    director,
-    starring,
-    description
-  } = film;
+export function TabOverview() {
+  
   return (
     <>
       <div className="film-rating">

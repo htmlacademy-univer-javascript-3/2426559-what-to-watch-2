@@ -2,13 +2,10 @@ import {useCallback, useMemo} from 'react';
 import {useAppDispatch, useAppSelector} from 'src/store';
 import {changeGenre} from 'src/store/action';
 import {ALL_GENRES} from 'src/constants';
-import {FilmCardData} from 'src/types';
 import './genres-catalog.css';
 
 
-type Props = {
-  films: FilmCardData[]
-}
+
 
 export function GenresCatalog(props: Props) {
   const {films} = props;
