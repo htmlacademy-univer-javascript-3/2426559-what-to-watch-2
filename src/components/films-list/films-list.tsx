@@ -1,16 +1,18 @@
-import { useCallback, useState } from 'react';
-import { FilmCard } from 'src/components/film-card';
+import {useCallback, useState} from 'react';
+import {FilmCard} from 'src/components/film-card';
 import {TFilmCard} from 'src/types';
 
+
 type Props = {
-    films: TFilmCard[]
+  films: TFilmCard[]
 }
 
-const FILMS_TO_SHOW_AMOUNT = 8;
+const COUNT_OF_FILMS_SHOWN = 8;
 
-export function FilmsList({ films }: Props) {
+export function FilmsList(props: Props) {
+  const {films} = props;
   const [activeFilm, setActiveFilm] = useState<TFilmCard | null>(null);
-  const [countOfFilmsShown, setCountOfFilmsShown] = useState<number>(FILMS_TO_SHOW_AMOUNT);
+  const [countOfFilmsShown, setCountOfFilmsShown] = useState<number>(COUNT_OF_FILMS_SHOWN);
   const handleMouseEnter = useCallback((film: TFilmCard) => {
     setActiveFilm(film);
   }, []);
@@ -18,7 +20,7 @@ export function FilmsList({ films }: Props) {
     setActiveFilm(null);
   }, []);
   const handleShowMore = useCallback(() => {
-    setCountOfFilmsShown((state) => state + FILMS_TO_SHOW_AMOUNT);
+    setCountOfFilmsShown((state) => state + COUNT_OF_FILMS_SHOWN);
   }, []);
   const showButton = films.length > countOfFilmsShown;
   return (
@@ -41,7 +43,7 @@ export function FilmsList({ films }: Props) {
             type="button"
             onClick={handleShowMore}
           >
-          Show more
+            Show more
           </button>
         </div>
       )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { playerMocks } from 'src/mocks/player';
 import { App } from './app/app';
 
 const root = ReactDOM.createRoot(
@@ -9,8 +8,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App
-      player={playerMocks}
-    />
+    <App />
   </React.StrictMode>
 );

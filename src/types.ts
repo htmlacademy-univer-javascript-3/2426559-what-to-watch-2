@@ -6,11 +6,6 @@ export type TComment = {
   user: string
 }
 
-
-export type PlayerProps = {
-  src: string
-}
-
 export type TFilm = {
   backgroundColor: string,
   backgroundImage: string,
@@ -26,7 +21,7 @@ export type TFilm = {
   runTime: number,
   scoresCount: number,
   starring: string[],
-  videoSrc: string
+  videoLink: string
 }
 
 export type TFilmCard = {

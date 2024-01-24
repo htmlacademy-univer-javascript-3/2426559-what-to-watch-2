@@ -12,70 +12,64 @@ import { Player } from 'src/pages/player';
 import { RoutePathname } from 'src/constants';
 import { ErrorPage } from 'src/pages/error-page';
 import {PrivateRoute} from 'src/components/private-route';
-import { PlayerProps } from 'src/types';
 import {ScrollToTop} from 'src/components/scroll-to-top';
 import {getLogin} from 'src/store/authorization/api';
 import {useAppDispatch} from 'src/store/hooks';
 
-type Props = {
-  player: PlayerProps
-};
 
-function Router(props: Props) {
-  const { player } = props;
+function Router() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getLogin());
   }, [dispatch]);
   return (
-    <SnackbarProvider>
-      <BrowserRouter>
-        <ScrollToTop>
-          <Routes>
-            <Route path={RoutePathname.main}>
-              <Route
-                index
-                element={<Main/>}
-              />
-              <Route
-                path={RoutePathname.login}
-                element={<SignIn/>}
-              />
-              <Route
-                path={RoutePathname.myList}
-                element={<PrivateRoute><MyList/></PrivateRoute>}
-              />
-              <Route
-                path={`${RoutePathname.films}/:id`}
-                element={<Film/>}
-              />
-              <Route
-                path={`${RoutePathname.films}/:id/${RoutePathname.review}`}
-                element={(
-                  <PrivateRoute navigateTo={`/${RoutePathname.login}`}>
-                    <AddReview/>
-                  </PrivateRoute>
-                )}
-              />
-              <Route
-                path={RoutePathname.player}
-                element={<Player {...player}/>}
-              />
-            </Route>
-            <Route path={RoutePathname.notFound} element={<ErrorPage/>}/>
-            <Route path='*' element={<ErrorPage/>}/>
-          </Routes>
-        </ScrollToTop>
-      </BrowserRouter>
-    </SnackbarProvider>
+    <Routes>
+    <Route path={RoutePathname.main}>
+      <Route
+        index
+        element={<Main/>}
+      />
+      <Route
+        path={RoutePathname.login}
+        element={<SignIn/>}
+      />
+      <Route
+        path={RoutePathname.myList}
+        element={<PrivateRoute><MyList/></PrivateRoute>}
+      />
+      <Route
+        path={`${RoutePathname.films}/:id`}
+        element={<Film/>}
+      />
+      <Route
+        path={`${RoutePathname.films}/:id/${RoutePathname.review}`}
+        element={(
+          <PrivateRoute navigateTo={`/${RoutePathname.login}`}>
+            <AddReview/>
+          </PrivateRoute>
+        )}
+      />
+      <Route
+        path={RoutePathname.player}
+        element={<Player/>}
+      />
+    </Route>
+    <Route path={RoutePathname.notFound} element={<ErrorPage/>}/>
+    <Route path="*" element={<ErrorPage/>}/>
+  </Routes>
   );
 }
 
-export function App(props: Props) {
-  const { player } = props;
+export function App() {
   return (
     <Provider store={store}>
-      <Router player={player} />
+      <SnackbarProvider>
+        <BrowserRouter>
+          <ScrollToTop>
+            <Router/>
+          </ScrollToTop>
+        </BrowserRouter>
+      </SnackbarProvider>
     </Provider>
   );
 }

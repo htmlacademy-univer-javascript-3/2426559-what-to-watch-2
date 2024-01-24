@@ -21,3 +21,10 @@ export enum AuthorizationStatus {
 }
 
 export const ALL_GENRES = 'All films';
+
+export enum FilmStatus {
+  addToFavorite = 1,
+  deleteFromFavorite = 0
+}
+
+export const ONE_HUNDRED_PERCENT = 100;

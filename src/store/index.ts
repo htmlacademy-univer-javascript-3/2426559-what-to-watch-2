@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import {createAPI} from 'src/api';
 import {rootReducer} from './reducer';

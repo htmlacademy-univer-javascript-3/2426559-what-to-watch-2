@@ -1,8 +1,8 @@
 import axios, {AxiosInstance} from 'axios';
-import {millisecondsInMinute} from 'date-fns';
+import {millisecondsInSecond } from 'date-fns';
 
 const BACKEND_URL = 'https://13.design.pages.academy/wtw';
-const REQUEST_TIMEOUT = millisecondsInMinute * 5;
+const REQUEST_TIMEOUT = millisecondsInSecond  * 5;
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
