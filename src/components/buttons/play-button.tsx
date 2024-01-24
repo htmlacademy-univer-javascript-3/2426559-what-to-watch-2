@@ -10,22 +10,22 @@ type Props = {
 }
 
 export function PlayButton(props: Props) {
-    const { videoLink } = props;
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const handleClick = useCallback(() => {
-        dispatch(updateVideoLink(videoLink));
-        navigate(`/${RoutePathname.player}`);
-    }, [dispatch, videoLink, navigate]);
-    return (
-        <Button
-            className="btn--play"
-            onClick={handleClick}
-        >
-            <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
-            </svg>
-            <span>Play</span>
-        </Button>
-    );
+  const { videoLink } = props;
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => {
+    dispatch(updateVideoLink(videoLink));
+    navigate(`/${RoutePathname.player}`);
+  }, [dispatch, videoLink, navigate]);
+  return (
+    <Button
+      className="btn--play"
+      onClick={handleClick}
+    >
+      <svg viewBox="0 0 19 19" width="19" height="19">
+        <use xlinkHref="#play-s"></use>
+      </svg>
+      <span>Play</span>
+    </Button>
+  );
 }

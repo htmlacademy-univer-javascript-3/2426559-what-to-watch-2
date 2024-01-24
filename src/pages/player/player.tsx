@@ -27,8 +27,7 @@ export function Player() {
       />      <button
         type="button"
         className="player__exit"
-        onClick={handleExit}
-      >
+        onClick={handleExit}>
         Exit
       </button>
       <div className="player__controls">

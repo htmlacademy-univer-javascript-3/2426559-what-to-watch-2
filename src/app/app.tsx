@@ -24,39 +24,39 @@ function Router() {
   }, [dispatch]);
   return (
     <Routes>
-    <Route path={RoutePathname.main}>
-      <Route
-        index
-        element={<Main/>}
-      />
-      <Route
-        path={RoutePathname.login}
-        element={<SignIn/>}
-      />
-      <Route
-        path={RoutePathname.myList}
-        element={<PrivateRoute><MyList/></PrivateRoute>}
-      />
-      <Route
-        path={`${RoutePathname.films}/:id`}
-        element={<Film/>}
-      />
-      <Route
-        path={`${RoutePathname.films}/:id/${RoutePathname.review}`}
-        element={(
-          <PrivateRoute navigateTo={`/${RoutePathname.login}`}>
-            <AddReview/>
-          </PrivateRoute>
-        )}
-      />
-      <Route
-        path={RoutePathname.player}
-        element={<Player/>}
-      />
-    </Route>
-    <Route path={RoutePathname.notFound} element={<ErrorPage/>}/>
-    <Route path="*" element={<ErrorPage/>}/>
-  </Routes>
+      <Route path={RoutePathname.main}>
+        <Route
+          index
+          element={<Main/>}
+        />
+        <Route
+          path={RoutePathname.login}
+          element={<SignIn/>}
+        />
+        <Route
+          path={RoutePathname.myList}
+          element={<PrivateRoute><MyList/></PrivateRoute>}
+        />
+        <Route
+          path={`${RoutePathname.films}/:id`}
+          element={<Film/>}
+        />
+        <Route
+          path={`${RoutePathname.films}/:id/${RoutePathname.review}`}
+          element={(
+            <PrivateRoute navigateTo={`/${RoutePathname.login}`}>
+              <AddReview/>
+            </PrivateRoute>
+          )}
+        />
+        <Route
+          path={RoutePathname.player}
+          element={<Player/>}
+        />
+      </Route>
+      <Route path={RoutePathname.notFound} element={<ErrorPage/>}/>
+      <Route path="*" element={<ErrorPage/>}/>
+    </Routes>
   );
 }
 
