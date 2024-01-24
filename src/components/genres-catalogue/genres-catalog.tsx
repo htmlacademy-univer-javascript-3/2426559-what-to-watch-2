@@ -1,6 +1,7 @@
 import {useCallback, useMemo} from 'react';
-import {useAppDispatch, useAppSelector} from 'src/store';
-import {changeGenre} from 'src/store/action';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {GenreSelector} from 'src/store/genre/selectors';
+import {changeGenre} from 'src/store/genre/action';
 import {ALL_GENRES} from 'src/constants';
 import {TFilmCard} from 'src/types';
 import './genres-catalog.css';
@@ -12,7 +13,7 @@ type Props = {
 
 export function GenresCatalog(props: Props) {
   const {films} = props;
-  const currentGenre = useAppSelector((state) => state.genre);
+  const currentGenre = useAppSelector(GenreSelector.genre);
   const dispatch = useAppDispatch();
   const handleClick = useCallback(
     (genre: string) => () => dispatch(changeGenre(genre)),

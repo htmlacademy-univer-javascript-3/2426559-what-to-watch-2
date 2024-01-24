@@ -39,7 +39,7 @@ export function FilmCard(props: Props) {
       </div>
       <h3 className="small-film-card__title">
         <Link
-          to={`/${RoutePathname.FILMS}/${id}`}
+          to={`/${RoutePathname.films}/${id}`}
           className="small-film-card__link"
         >
           {name}

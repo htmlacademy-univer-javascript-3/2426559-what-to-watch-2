@@ -6,19 +6,19 @@ import { FilmsList } from 'src/components/films-list';
 import { LinkButton } from 'src/components/buttons';
 import { AuthorizationStatus, RoutePathname } from 'src/constants';
 import { Tabs } from 'src/components/tabs';
-import { useAppDispatch, useAppSelector } from 'src/store';
-import { fetchFilmSimilar } from 'src/store/api';
+import {fetchFilmSimilar} from 'src/store/film/api';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {FilmSelector} from 'src/store/film/selectors';
+import {AuthorizationSelector} from 'src/store/authorization/selectors';
 import { useFetchFilm } from 'src/hooks';
 
 
 export function Film() {
   const { id = '' } = useParams();
   const dispatch = useAppDispatch();
-  const {
-    film,
-    filmsSimilar,
-    authorizationStatus
-  } = useAppSelector((state) => state);
+  const film = useAppSelector(FilmSelector.film);
+  const filmsSimilar = useAppSelector(FilmSelector.similar);
+  const authorizationStatus = useAppSelector(AuthorizationSelector.status);
   const isAuthorized = authorizationStatus === AuthorizationStatus.authorized;
   useFetchFilm(id);
   useEffect(() => {
@@ -55,7 +55,7 @@ export function Film() {
               </p>
               <div className="film-card__buttons">
                 <LinkButton
-                  link={`/${RoutePathname.PLAYER}`}
+                  link={`/${RoutePathname.player}`}
                   className="btn btn--play film-card__button"
                   svgViewBox="0 0 19 19"
                   svgWidth="19"
@@ -64,7 +64,7 @@ export function Film() {
                   label="Play"
                 />
                 <LinkButton
-                  link={`/${RoutePathname.MY_LIST}`}
+                  link={`/${RoutePathname.myList}`}
                   className="btn btn--list film-card__button"
                   svgViewBox="0 0 19 20"
                   svgWidth="19"
@@ -76,7 +76,7 @@ export function Film() {
                 </LinkButton>
                 {isAuthorized && (
                   <Link
-                    to={`/${RoutePathname.FILMS}/${id}/${RoutePathname.REVIEW}`}
+                    to={`/${RoutePathname.films}/${id}/${RoutePathname.review}`}
                     className="btn film-card__button"
                   >
                     Add review

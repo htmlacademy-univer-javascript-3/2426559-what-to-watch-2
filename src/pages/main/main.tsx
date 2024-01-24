@@ -8,17 +8,20 @@ import { useFiltredFilms } from 'src/hooks';
 import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { ReduxStateStatus } from 'src/constants';
-import { useAppDispatch, useAppSelector } from 'src/store';
-import { fetchFilms, fetchPromoFilm } from 'src/store/api';
 import {Spinner} from 'src/components/spinner';
+import {fetchFilms} from 'src/store/films/api';
+import {fetchPromoFilm} from 'src/store/film/api';
+import {useAppDispatch, useAppSelector} from 'src/store/hooks';
+import {FilmsSelector} from 'src/store/films/selectors';
+import {FilmSelector} from 'src/store/film/selectors';
 
 export function Main() {
 
   const dispatch = useAppDispatch();
   const {enqueueSnackbar} = useSnackbar();
   const [loading, setLoading] = useState(false);
-  const {films, promoFilm} = useAppSelector((state) => state);
-  useEffect(() => {
+  const films = useAppSelector(FilmsSelector.list);
+  const promoFilm = useAppSelector(FilmSelector.promo); useEffect(() => {
     setLoading(true);
     dispatch(fetchFilms())
       .then((res) => {
@@ -59,7 +62,7 @@ export function Main() {
               </p>
               <div className="film-card__buttons">
                 <LinkButton
-                  link={`/${RoutePathname.PLAYER}`}
+                  link={`/${RoutePathname.player}`}
                   className="btn btn--play film-card__button"
                   svgViewBox="0 0 19 19"
                   svgWidth="19"
@@ -68,7 +71,7 @@ export function Main() {
                   label="Play"
                 />
                 <LinkButton
-                  link={`/${RoutePathname.MY_LIST}`}
+                  link={`/${RoutePathname.myList}`}
                   className="btn btn--list film-card__button"
                   svgViewBox="0 0 19 20"
                   svgWidth="19"

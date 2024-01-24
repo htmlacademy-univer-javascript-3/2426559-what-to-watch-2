@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
-import {fetchFilm, fetchFilmSimilar} from 'src/store/api.ts';
-import {ReduxStateStatus, RoutePathname} from 'src/constants.ts';
-import {useAppDispatch} from 'src/store';
+import {fetchFilm, fetchFilmSimilar} from 'src/store/film/api';import {ReduxStateStatus, RoutePathname} from 'src/constants.ts';
+import {useAppDispatch} from 'src/store/hooks';
 import {useNavigate} from 'react-router-dom';
 
 export function useFetchFilm(id: string) {
@@ -12,7 +11,7 @@ export function useFetchFilm(id: string) {
     dispatch(fetchFilm(id))
       .then((res) => {
         if (res.meta.requestStatus === ReduxStateStatus.rejected) {
-          navigate(`/${RoutePathname.NOT_FOUND}`);
+          navigate(`/${RoutePathname.notFound}`);
         }
       });
   }, [id, navigate, dispatch]);

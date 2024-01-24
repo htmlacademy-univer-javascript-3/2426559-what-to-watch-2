@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import {SnackbarProvider} from 'notistack';
-import { store, useAppDispatch } from 'src/store';
+import { store } from 'src/store';
 import { SignIn } from 'src/pages/sign-in';
 import { MyList } from 'src/pages/my-list';
 import { Film } from 'src/pages/film';
@@ -14,7 +14,8 @@ import { ErrorPage } from 'src/pages/error-page';
 import {PrivateRoute} from 'src/components/private-route';
 import { PlayerProps } from 'src/types';
 import {ScrollToTop} from 'src/components/scroll-to-top';
-import {getLogin} from 'src/store/api';
+import {getLogin} from 'src/store/authorization/api';
+import {useAppDispatch} from 'src/store/hooks';
 
 type Props = {
   player: PlayerProps
@@ -31,37 +32,37 @@ function Router(props: Props) {
       <BrowserRouter>
         <ScrollToTop>
           <Routes>
-            <Route path={RoutePathname.MAIN}>
+            <Route path={RoutePathname.main}>
               <Route
                 index
                 element={<Main/>}
               />
               <Route
-                path={RoutePathname.LOGIN}
+                path={RoutePathname.login}
                 element={<SignIn/>}
               />
               <Route
-                path={RoutePathname.MY_LIST}
+                path={RoutePathname.myList}
                 element={<PrivateRoute><MyList/></PrivateRoute>}
               />
               <Route
-                path={`${RoutePathname.FILMS}/:id`}
+                path={`${RoutePathname.films}/:id`}
                 element={<Film/>}
               />
               <Route
-                path={`${RoutePathname.FILMS}/:id/${RoutePathname.REVIEW}`}
+                path={`${RoutePathname.films}/:id/${RoutePathname.review}`}
                 element={(
-                  <PrivateRoute navigateTo={`/${RoutePathname.LOGIN}`}>
+                  <PrivateRoute navigateTo={`/${RoutePathname.login}`}>
                     <AddReview/>
                   </PrivateRoute>
                 )}
               />
               <Route
-                path={RoutePathname.PLAYER}
+                path={RoutePathname.player}
                 element={<Player {...player}/>}
               />
             </Route>
-            <Route path={RoutePathname.NOT_FOUND} element={<ErrorPage/>}/>
+            <Route path={RoutePathname.notFound} element={<ErrorPage/>}/>
             <Route path='*' element={<ErrorPage/>}/>
           </Routes>
         </ScrollToTop>

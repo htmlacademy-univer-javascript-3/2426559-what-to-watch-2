@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, Fragment, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { postComments } from 'src/store/api';
+import {postComments} from 'src/store/film/api';
 import { ReduxStateStatus, RoutePathname } from 'src/constants';
-import { useAppDispatch } from 'src/store';
+import {useAppDispatch} from 'src/store/hooks';
 
 const MIN_LENGTH = 50;
 const MAX_LENGTH = 400;
@@ -39,7 +39,7 @@ export function ReviewForm(props: Props) {
             { variant: 'error' }
           );
         } else {
-          navigate(`/${RoutePathname.FILMS}/${filmId}#reviews`);
+          navigate(`/${RoutePathname.films}/${filmId}#reviews`);
         }
         return null;
       });
